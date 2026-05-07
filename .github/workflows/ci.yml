@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup dependencies
+        run: bash .github/scripts/setup-deps.sh
+
       - uses: actions/setup-go@v5
         with:
           go-version: "1.26.3"
@@ -30,6 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup dependencies
+        run: bash .github/scripts/setup-deps.sh
 
       - uses: actions/setup-go@v5
         with:
@@ -48,6 +54,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup dependencies
+        run: bash .github/scripts/setup-deps.sh
+
       - uses: actions/setup-go@v5
         with:
           go-version: "1.26.3"
@@ -62,11 +71,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v5
-        with:
-          go-version: "1.26.3"
-          cache: true
-
       - name: Check formatting
         run: |
           if [ -n "$(gofmt -l $(find . -name '*.go' -not -path './vendor/*'))" ]; then
@@ -80,6 +84,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup dependencies
+        run: bash .github/scripts/setup-deps.sh
 
       - uses: actions/setup-go@v5
         with:
